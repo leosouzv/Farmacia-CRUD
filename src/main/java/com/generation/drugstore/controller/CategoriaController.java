@@ -21,20 +21,21 @@ import com.generation.drugstore.model.Categoria;
 import com.generation.drugstore.repository.CategoriaRepository;
 
 @RestController
-@CrossOrigin("*")
 @RequestMapping("/categorias")
+@CrossOrigin("*")
 public class CategoriaController {
+	
 	@Autowired
 	private CategoriaRepository repository;
-
+	
 	@GetMapping
 	public List<Categoria> getAll() {
 		return repository.findAll();
 	}
 
-	@GetMapping("/titulo/{titulo}")
-	public ResponseEntity<List<Categoria>> getByTitulo(@PathVariable String titulo) {
-		return ResponseEntity.ok(repository.findAllByTituloContainingIgnoreCase(titulo));
+	@GetMapping("/nome/{nome}")
+	public ResponseEntity<List<Categoria>> getByTitulo(@PathVariable String nome) {
+		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));
 	}
 
 	@GetMapping("/{id}")

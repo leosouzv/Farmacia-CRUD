@@ -21,8 +21,8 @@ import com.generation.drugstore.model.Produto;
 import com.generation.drugstore.repository.ProdutoRepository;
 
 @RestController
-@CrossOrigin("*")
 @RequestMapping("/produtos")
+@CrossOrigin("*")
 public class ProdutoController {
 
 	@Autowired
@@ -33,9 +33,9 @@ public class ProdutoController {
 		return repository.findAll();
 	}
 
-	@GetMapping("/titulo/{titulo}")
-	public ResponseEntity<List<Produto>> getByTitulo(@PathVariable String titulo) {
-		return ResponseEntity.ok(repository.findAllByTituloContainingIgnoreCase(titulo));
+	@GetMapping("/nome/{nome}")
+	public ResponseEntity<List<Produto>> getByTitulo(@PathVariable String nome) {
+		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));
 	}
 
 	@GetMapping("/{id}")
